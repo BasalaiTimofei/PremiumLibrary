@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PremiumLibrary.Models.ViewModels;
+using PremiumLibrary.Models.ViewModels.User;
 using PremiumLibrary.Services;
 
 namespace PremiumLibrary.Controllers
@@ -18,7 +18,7 @@ namespace PremiumLibrary.Controllers
 
         [HttpPost]
         [Route("registration")]
-        public async Task<ActionResult> Registration([FromBody] RegistrationUser model)
+        public async Task<ActionResult> Registration([FromBody] Registration model)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace PremiumLibrary.Controllers
         }
         [HttpPost]
         [Route("authorization")]
-        public async Task<ActionResult> Authorization([FromBody] AuthorizationUser model)
+        public async Task<ActionResult> Authorization([FromBody] Authorization model)
         {
             try
             {

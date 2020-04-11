@@ -2,26 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PremiumLibrary.Context;
+using AutoMapper;
+using PremiumLibrary.Interfaces.Repositories;
+using PremiumLibrary.Interfaces.Services;
 using PremiumLibrary.Models.DataBaseModels;
-using PremiumLibrary.Models.ViewModels;
+using PremiumLibrary.Models.ViewModels.User;
 
 namespace PremiumLibrary.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly ApplicationContext _applicationContext;
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+        private bool _disposed;
 
-        public UserService(ApplicationContext applicationContext)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
-            _applicationContext = applicationContext;
+            _userRepository = userRepository;
+            _mapper = mapper;
         }
 
-        public async Task<string> Registration(RegistrationUser model)
+        public async Task<string> Registration(Registration model)
         {
-            if (_applicationContext.Users.Any(w => w.UserName == model.UserName) 
-                || _applicationContext.Users.Any(w => w.EmailAddress == model.EmailAddress))
+            var users = await _userRepository.GetAll();
+            if (users.Any(w => w.UserName == model.UserName) 
+                || users.Any(w => w.EmailAddress == model.EmailAddress))
             {
                 throw new Exception();
             }
@@ -38,16 +43,17 @@ namespace PremiumLibrary.Services
                 UserName = model.UserName,
                 Password = model.Password
             };
-            await _applicationContext.Users.AddAsync(user);
-            await _applicationContext.SaveChangesAsync();
-
+            await _userRepository.Add(user);
             return user.Id;
         }
 
-        public async Task<string> Authorization(AuthorizationUser model)
+        public async Task<string> Authorization(Authorization model)
         {
-            var user = await _applicationContext.Users.FirstOrDefaultAsync(w =>
+            var users = await _userRepository.GetAll();
+            var user = users.FirstOrDefault(w =>
                 string.Equals(w.EmailAddress, model.UserNameOrEmailAddress) || string.Equals(w.UserName, model.UserNameOrEmailAddress));
+
+            if (user == null) throw new Exception(); //TODO Пользователь ненайден
 
             if (!string.Equals(model.Password, user.Password))
             {
@@ -57,11 +63,24 @@ namespace PremiumLibrary.Services
             return user.Id;
         }
 
-        public async Task<List<string>> GetAll()
+        public Task<List<UserListingModel>> GetAll()
         {
-            var result = await _applicationContext.Users.Select(w => w.Id).ToListAsync();
-
-            return result;
+            return _userRepository.GetAll()
+                .ContinueWith(w => _mapper.Map<List<UserListingModel>>(w.Result));
         }
+
+        public void Dispose()
+        {
+            if (_disposed) return;
+            _userRepository?.Dispose();
+            _disposed = true;
+            GC.SuppressFinalize(this);
+        }
+
+        ~UserService()
+        {
+            Dispose();
+        }
+
     }
 }

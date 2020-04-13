@@ -101,7 +101,6 @@ namespace PremiumLibrary.Services
         {
             if (_disposed) return;
             _roleRepository?.Dispose();
-            _userRepository?.Dispose();
             _disposed = true;
             GC.SuppressFinalize(this);
         }

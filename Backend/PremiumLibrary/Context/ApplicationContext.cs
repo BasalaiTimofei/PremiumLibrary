@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PremiumLibrary.Models.DataBaseModels;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using PremiumLibrary.Models.DataBaseModels.AuthorFolder;
+using PremiumLibrary.Models.DataBaseModels.BookFolder;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 
 namespace PremiumLibrary.Context
 {

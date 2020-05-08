@@ -75,21 +75,5 @@ namespace PremiumLibrary.Controllers
                 return BadRequest("Error");
             }
         }
-
-        [HttpGet]
-        [Route("users")]
-        public async Task<ActionResult> GetUsersByRole([FromBody] InviteOrLeaveUserFromRole model)
-        {
-            try
-            {
-                var result = await _roleService.GetUsersByRole(model.RoleId);
-                return Ok(result);
-            }
-            catch (Exception)
-            {
-                return BadRequest("Error");
-            }
-        }
-
     }
 }

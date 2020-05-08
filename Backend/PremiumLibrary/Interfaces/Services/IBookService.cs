@@ -10,13 +10,16 @@ namespace PremiumLibrary.Interfaces.Services
         Task<List<BookListingModel>> GetAll(string userId);
         Task<List<BookListingModel>> GetByAuthor(string authorId, string userId);
         Task<List<BookListingModel>> GetByGenre(string genreId, string userId);
+        Task<List<BookListingModel>> GetByLikes(string userId);
+
         Task<BookListingModel> GetById(string bookId, string userId);
         Task<BookListingModel> GetByName(string bookName, string userId);
 
-        Task AddBook(BookCreateModel bookCreateModel);
+        Task<string> AddBook(BookCreateModel bookCreateModel);
         Task Update();
         Task Delete(string bookId);
 
         Task AddAssessment(string bookId, string userId, int assessment);
+        Task AddOrUpdateProcess(string bookId, string userId, int count);
     }
 }

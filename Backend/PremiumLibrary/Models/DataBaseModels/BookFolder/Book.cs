@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using PremiumLibrary.Models.DataBaseModels.AuthorFolder;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 
-namespace PremiumLibrary.Models.DataBaseModels.Book
+namespace PremiumLibrary.Models.DataBaseModels.BookFolder
 {
     public class Book
     {

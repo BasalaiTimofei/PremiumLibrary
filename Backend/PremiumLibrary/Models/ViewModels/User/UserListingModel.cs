@@ -4,6 +4,6 @@
     {
         public string Id { get; set; }
         public string UserName { get; set; }
-        //public List<RoleListingModel> RoleViewModels { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

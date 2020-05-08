@@ -1,8 +1,11 @@
-﻿namespace PremiumLibrary.Models.DataBaseModels.Book
+﻿namespace PremiumLibrary.Models.DataBaseModels.BookFolder
 {
-    public class BookLike
+    public class BookProcess
     {
         public string Id { get; set; }
+
+        //TODO 0-буду, 1-читаю, 2-прочитал, 3-бросил
+        public int Process { get; set; }
 
         public string BookId { get; set; }
         public Book Book { get; set; }

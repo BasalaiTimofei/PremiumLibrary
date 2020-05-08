@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using Castle.Core.Internal;
+using PremiumLibrary.Models.DataBaseModels.AuthorFolder;
+using PremiumLibrary.Models.DataBaseModels.BookFolder;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 using PremiumLibrary.Models.ViewModels.Book;
 
 namespace PremiumLibrary.Mapping
@@ -21,7 +24,7 @@ namespace PremiumLibrary.Mapping
                 .ForMember(w => w.BookUrl,
                     e => e.MapFrom(q => q.BookUrl))
                 .ForMember(w => w.ImageIrl,
-                    e => e.MapFrom(q => q.ImageUrl))
+                    e => e.MapFrom(q => q.ImageUrl.IsNullOrEmpty() ? Constant.DEFAULT_IMAGE_URL : q.ImageUrl))
                 .ForMember(w => w.Year,
                     e => e.MapFrom(q => q.Year))
                 .ForMember(w => w.Authors,
@@ -51,11 +54,11 @@ namespace PremiumLibrary.Mapping
                 .ForMember(w => w.Year,
                     e => e.MapFrom(q => q.Year))
                 .ForMember(w => w.Assessment,
-                    e => e.MapFrom(q => q.Assessments.Sum(r => r.Count) / q.Assessments.Count))
+                e => e.MapFrom(q => q.Assessments.Count != 0 ? q.Assessments.Sum(r => r.Count) / q.Assessments.Count : 0))
                 .ForMember(w => w.YourAssessment,
                     e => e.Ignore())
                 .ForMember(w => w.Genres,
-                    e => e.MapFrom(q => q.Genres.Select(s => s.Genre.Name)))
+                e => e.MapFrom(q => q.Genres.Count != 0 ? q.Genres.Select(s => s.Genre.Name) : new List<string>()))
                 .ForMember(w => w.Comments,
                     e => e.MapFrom(q => q.Comments.Count))
                 .ForMember(w => w.Likes,

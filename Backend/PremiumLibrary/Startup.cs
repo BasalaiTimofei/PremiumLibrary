@@ -24,6 +24,8 @@ namespace PremiumLibrary
             services.AddDbContext<ApplicationContext>(options => 
                 options.UseLazyLoadingProxies()
                     .UseSqlServer(connection));
+                  //.UseSqlServer(connection, x => x.MigrationsAssembly("PremiumLibrary")));
+
 
             services.AddControllers();
 

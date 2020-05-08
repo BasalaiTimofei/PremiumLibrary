@@ -7,11 +7,12 @@ namespace PremiumLibrary.Interfaces.Repositories
 {
     public interface IUserRepository : IDisposable
     {
-        Task<User> Add(User model);
-        Task Delete(string userId);
-        Task Delete(User user);
-        Task Update(User user);
         Task<List<User>> GetAll();
         Task<User> GetById(string id);
+
+        Task<User> Add(User model);
+        Task Delete(User user);
+
+        Task Update(User user);
     }
 }

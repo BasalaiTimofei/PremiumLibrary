@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PremiumLibrary.Models.DataBaseModels.Book
+namespace PremiumLibrary.Models.DataBaseModels.AuthorFolder
 {
     public class Author
     {

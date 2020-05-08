@@ -9,7 +9,8 @@ namespace PremiumLibrary.Interfaces.Services
     {
         Task<List<AuthorListingModel>> GetAll(string userId);
         Task<List<AuthorListingModel>> GetByBook(string bookId, string userId);
-       
+        Task<List<AuthorListingModel>> GetByLike(string userId);
+
         Task<AuthorListingModel> GetById(string authorId, string userId);
         Task<AuthorListingModel> GetByName(string authorName, string userId);
         

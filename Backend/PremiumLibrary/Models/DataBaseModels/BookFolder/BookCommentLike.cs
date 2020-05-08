@@ -1,4 +1,4 @@
-﻿namespace PremiumLibrary.Models.DataBaseModels.Book
+﻿namespace PremiumLibrary.Models.DataBaseModels.BookFolder
 {
     public class BookCommentLike
     {

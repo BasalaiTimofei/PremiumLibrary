@@ -1,4 +1,6 @@
-﻿namespace PremiumLibrary.Models.DataBaseModels.Book
+﻿using PremiumLibrary.Models.DataBaseModels.BookFolder;
+
+namespace PremiumLibrary.Models.DataBaseModels.AuthorFolder
 {
     public class AuthorBook
     {

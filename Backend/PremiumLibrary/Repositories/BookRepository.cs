@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PremiumLibrary.Context;
 using PremiumLibrary.Interfaces.Repositories;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using PremiumLibrary.Models.DataBaseModels.BookFolder;
 
 namespace PremiumLibrary.Repositories
 {
@@ -33,6 +33,48 @@ namespace PremiumLibrary.Repositories
             await _applicationContext.Books.AddAsync(book);
             await _applicationContext.SaveChangesAsync();
             return await _applicationContext.Books.FirstOrDefaultAsync(w => string.Equals(w.Id, book.Id));
+        }
+
+        public async Task AddAssessment(Book book, string userId, int count)
+        {
+            var user = await _applicationContext.Users.FindAsync(userId);
+            var assessment = new BookAssessment
+            {
+                Id = Guid.NewGuid().ToString(),
+                User = user,
+                UserId = user.Id,
+                Book = book,
+                BookId = book.Id,
+                Count = count
+            };
+            await _applicationContext.BookAssessments.AddAsync(assessment);
+            await _applicationContext.SaveChangesAsync();
+        }
+
+        public async Task AddProcess(Book book, string userId, int count)
+        {
+            var user = await _applicationContext.Users.FindAsync(userId);
+            var process = new BookProcess
+            {
+                Id = Guid.NewGuid().ToString(),
+                User = user,
+                UserId = user.Id,
+                Book = book,
+                BookId = book.Id,
+                Process = count
+            };
+            await _applicationContext.BookProcesses.AddAsync(process);
+            await _applicationContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateProcess(Book book, string userId, int count)
+        {
+            var processDb = await _applicationContext.BookProcesses.FirstOrDefaultAsync(w =>
+                string.Equals(w.BookId, book.Id) && string.Equals(w.UserId, userId));
+            var entry = _applicationContext.Entry(processDb);
+            entry.CurrentValues.SetValues(processDb.Process = count);
+            entry.Property(w => w.Id).IsModified = false;
+            await _applicationContext.SaveChangesAsync();
         }
 
         public async Task Delete(Book book)

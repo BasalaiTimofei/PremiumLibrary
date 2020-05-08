@@ -9,11 +9,12 @@ namespace PremiumLibrary.Interfaces.Services
     {
         Task<List<GenreListingModel>> GetAll(string userId);
         Task<List<GenreListingModel>> GetByBook(string bookId, string userId);
+        Task<List<GenreListingModel>> GetByLike(string userId);
 
         Task<GenreListingModel> GetById(string genreId, string userId);
-        Task<GenreListingModel> GetByName(string genreId, string userId);
+        Task<GenreListingModel> GetByName(string genreName, string userId);
 
-        Task Create(GenreCreateModel genreCreateModel);
+        Task<string> Create(GenreCreateModel genreCreateModel);
         Task Update();
         Task Delete(string genreId);
     }

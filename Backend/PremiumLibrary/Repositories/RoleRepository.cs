@@ -16,6 +16,18 @@ namespace PremiumLibrary.Repositories
         public RoleRepository(ApplicationContext applicationContext) 
             => _applicationContext = applicationContext;
 
+        public async Task<List<Role>> GetAll()
+        {
+            var result = await _applicationContext.Roles.ToListAsync();
+            return result;
+        }
+
+        public async Task<Role> GetById(string id)
+        {
+            var result = await _applicationContext.Roles.FindAsync(id);
+            return result;
+        }
+        
         public async Task<Role> Add(string name)
         {
             var role = new Role
@@ -24,19 +36,9 @@ namespace PremiumLibrary.Repositories
                 Name = name,
                 Users = new List<UserRole>()
             };
-
             await _applicationContext.Roles.AddAsync(role);
             await _applicationContext.SaveChangesAsync();
-
             return await _applicationContext.Roles.FirstOrDefaultAsync(w => string .Equals(w.Id, role.Id));
-        }
-
-        public async Task Delete(string roleId)
-        {
-            var role = await _applicationContext.Roles.FirstOrDefaultAsync(w => string.Equals(w.Id, roleId));
-            if (role == null) return;
-            _applicationContext.Roles.Remove(role);
-            await _applicationContext.SaveChangesAsync();
         }
 
         public async Task Delete(Role role)
@@ -46,8 +48,9 @@ namespace PremiumLibrary.Repositories
             await _applicationContext.SaveChangesAsync();
         }
 
-        public async Task AddUserRole(User user, Role role)
+        public async Task AddUserRole(string userId, Role role)
         {
+            var user = await _applicationContext.Users.FindAsync(userId);
             await _applicationContext.UserRoles.AddAsync(new UserRole
             {
                 Id = Guid.NewGuid().ToString(),
@@ -65,24 +68,6 @@ namespace PremiumLibrary.Repositories
             await _applicationContext.SaveChangesAsync();
         }
 
-        public async Task<List<Role>> GetAll()
-        {
-            var result = await _applicationContext.Roles.ToListAsync();
-            return result;
-        }
-
-        public async Task<Role> GetById(string id)
-        {
-            var result = await _applicationContext.Roles.FindAsync(id);
-            return result;
-        }
-
-        public async Task<Role> GetByName(string name)
-        {
-            var role = await _applicationContext.Roles.FirstOrDefaultAsync(w => string.Equals(w.Name, name));
-            return role;
-        }
-
         public void Dispose()
         {
             Dispose(true);
@@ -96,7 +81,6 @@ namespace PremiumLibrary.Repositories
             {
                 _applicationContext.Dispose();
             }
-
             _disposed = true;
         }
     }

@@ -1,11 +1,11 @@
-﻿namespace PremiumLibrary.Models.DataBaseModels.Book
+﻿namespace PremiumLibrary.Models.DataBaseModels.BookFolder
 {
-    public class BookProcess
+    public class BookAssessment
     {
         public string Id { get; set; }
 
-        //TODO 0-буду, 1-читаю, 2-прочитал, 3-бросил
-        public int Process { get; set; }
+        //TODO от 1 до 10 
+        public int Count { get; set; }
 
         public string BookId { get; set; }
         public Book Book { get; set; }

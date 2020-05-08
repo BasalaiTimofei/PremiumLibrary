@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 
 namespace PremiumLibrary.Interfaces.Repositories
 {

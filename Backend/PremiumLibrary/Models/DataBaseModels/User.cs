@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using PremiumLibrary.Models.DataBaseModels.AuthorFolder;
+using PremiumLibrary.Models.DataBaseModels.BookFolder;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 
 namespace PremiumLibrary.Models.DataBaseModels
 {
@@ -12,7 +14,7 @@ namespace PremiumLibrary.Models.DataBaseModels
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public virtual List<UserRole> Roles { get; set; }
+        public List<UserRole> Roles { get; set; }
         public List<AuthorLike> AuthorLikes { get; set; }
         public List<AuthorComment> AuthorComments { get; set; }
         public List<AuthorCommentLike> AuthorCommentLikes { get; set; }

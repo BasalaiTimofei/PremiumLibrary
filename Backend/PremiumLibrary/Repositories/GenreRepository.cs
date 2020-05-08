@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PremiumLibrary.Context;
 using PremiumLibrary.Interfaces.Repositories;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using PremiumLibrary.Models.DataBaseModels.GenreFolder;
 
 namespace PremiumLibrary.Repositories
 {

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using PremiumLibrary.Models.DataBaseModels.Book;
+using Castle.Core.Internal;
+using PremiumLibrary.Models.DataBaseModels.AuthorFolder;
 using PremiumLibrary.Models.ViewModels.Author;
 
 namespace PremiumLibrary.Mapping
@@ -19,7 +20,7 @@ namespace PremiumLibrary.Mapping
                 .ForMember(w => w.SecondName,
                     e => e.MapFrom(q => q.SecondName))
                 .ForMember(w => w.ImageUrl,
-                    e => e.MapFrom(q => q.ImageUrl))
+                    e => e.MapFrom(q => q.ImageUrl.IsNullOrEmpty() ? Constant.DEFAULT_IMAGE_URL : q.ImageUrl))
                 .ForMember(w => w.AuthorBooks,
                     e => e.MapFrom(q => new List<AuthorBook>()))
                 .ForMember(w => w.AuthorComments,

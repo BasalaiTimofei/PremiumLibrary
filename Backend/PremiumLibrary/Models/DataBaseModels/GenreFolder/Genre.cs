@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PremiumLibrary.Models.DataBaseModels.Book
+namespace PremiumLibrary.Models.DataBaseModels.GenreFolder
 {
     public class Genre
     {

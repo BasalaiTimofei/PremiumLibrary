@@ -1,0 +1,113 @@
+#container {
+    display: grid;
+    grid-template-areas:
+    "pageHeader pageHeader pageHeader"
+    "pageLeft pageFind pageRight"
+    "pageLeft pageMain pageRight"
+    "pageFooter pageFooter pageFooter";
+    grid-template-rows: 300px 70px auto 300px;
+    grid-template-columns: auto 1350px auto;
+    grid-gap: 10px;
+    height: auto;
+    margin: 0;
+}
+
+#pageHeader,
+#pageLeft,
+#pageMain,
+#pageRight,
+#pageFooter,
+
+#pageFind{
+    background: #412a47;
+}
+
+#pageHeader {
+    grid-area: pageHeader;
+}
+
+#pageFind{
+    grid-area: pageFind;
+}
+
+#pageFooter {
+    grid-area: pageFooter;
+}
+
+#pageMain {
+    grid-area: pageMain;
+}
+
+#pageLeft {
+    grid-area: pageLeft;
+}
+
+#pageRight {
+    grid-area: pageRight;
+}
+
+.serch {
+    margin-top: 5px;
+    margin-left: 25px;
+    width: 92.5%;
+}
+
+
+
+
+
+
+
+.header{
+    height: 200px;
+    width: all;
+    background-color: gray;
+}
+
+.header-bottom{
+    height: 100px;
+    width: all;
+    background-color: darkgray;
+}
+
+.find{
+    height: 50px;
+    width: all;
+    background-color: lightgray;
+}
+
+.first-karusel{
+    height: 400px;
+    width: all;
+    background-color: gray;
+}
+
+.last-added-odd{
+    height: 100px;
+    width: all;
+    background-color: darkgray;
+}
+
+.last-added-even{
+    height: 100px;
+    width: all;
+    background-color: lightgray;
+}
+
+.second-karusel{
+    height: 400px;
+    width: all;
+    background-color: gray;
+}
+
+.result{
+    height: 300px;
+    width: all;
+    background-color: darkgray;
+}
+
+.filter{
+    height: 600px; /* 125 + 75*5 + 100 */
+    width: all;
+    background-color: lightgray;
+}

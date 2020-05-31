@@ -59,6 +59,8 @@ namespace PremiumLibrary.Mapping
                     e => e.Ignore())
                 .ForMember(w => w.Genres,
                 e => e.MapFrom(q => q.Genres.Count != 0 ? q.Genres.Select(s => s.Genre.Name) : new List<string>()))
+                .ForMember(w => w.Authors,
+                    e => e.MapFrom(q => q.Authors.Count != 0 ? q.Authors.Select(s => $"{s.Author.FirstName} {s.Author.SecondName}") : new List<string>()))
                 .ForMember(w => w.Comments,
                     e => e.MapFrom(q => q.Comments.Count))
                 .ForMember(w => w.Likes,

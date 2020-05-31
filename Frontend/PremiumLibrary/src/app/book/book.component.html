@@ -1,0 +1,76 @@
+<div id="container">
+    <div id="book">
+        <div id="bookImage" style="background: url({{bookListingModel.imageUrl}});">
+        </div>
+        <div id="bookName">
+            <div id="bookNameText">
+                {{bookListingModel.name}}
+            </div>
+            <div id="bookNameLike">
+                <button mat-button matSuffix mat-icon-button aria-label="Favorite" 
+                *ngIf="!bookListingModel.like">
+                    <mat-icon id="buttonFavorite">favorite_border</mat-icon>
+                </button>
+                <button mat-button matSuffix mat-icon-button aria-label="Favorite" 
+                *ngIf="bookListingModel.like">
+                    <mat-icon id="buttonFavorite" style="color: brown;">favorite_border</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div id="bookInformation">
+            <p>
+                <span>Год издания: </span>
+                <span style="color: rgba(200, 87, 204, 0.55);">{{bookListingModel.year}}</span>
+            </p>
+            <span>
+                <mat-chip-list aria-label="Fish selection">
+                    <span style="margin-right: 15px; margin-top: -5px;">Автор: </span>
+                    <mat-chip id="chipsStyle" *ngFor="let author of authorsListingModel">
+                        <a (click)="redirectAuthor(author.id)">
+                            {{author.fullName}}
+                        </a>    
+                    </mat-chip>
+                </mat-chip-list>
+            </span>
+            <p>
+            <span style="margin-top: 15px;">
+                <mat-chip-list aria-label="Fish selection">
+                    <span style="margin-right: 15px; margin-top: -5px;">Жанр: </span> 
+                    <mat-chip id="chipsStyle" *ngFor="let genre of genresListingModel">
+                        <a (click)="redirectGenre(genre.id)">{{genre.name}}</a>
+                    </mat-chip>
+                </mat-chip-list>
+            </span>
+            </p>
+            
+        </div>
+        <div id="bookAssessment">
+            <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            
+        </div>
+        <div id="bookDescription">
+            {{bookListingModel.description}}
+        </div>
+        <div id="bookButtons">
+            <div id="bookButtonsSpaceLeft"></div>
+            <div id="bookProcess">
+                <mat-chip id="bookProcessButton" *ngIf="bookListingModel.process == 0">Процесс</mat-chip>
+                <mat-chip id="bookProcessButton" *ngIf="bookListingModel.process == 1">Читаю</mat-chip>
+                <mat-chip id="bookProcessButton" *ngIf="bookListingModel.process == 2">Буду читать</mat-chip>
+                <mat-chip id="bookProcessButton" *ngIf="bookListingModel.process == 3">Прочитано</mat-chip>
+                <mat-chip id="bookProcessButton" *ngIf="bookListingModel.process == 4">Брошено</mat-chip>
+            </div>
+            <div id="bookUrl">
+                <a href="{{bookListingModel.bookUrl}}" style="text-decoration: none;">
+                    <mat-chip id="bookUrlBotton">
+                        Ссылка для чтения
+                    </mat-chip>
+                </a>
+            </div>
+            <div id="bookButtonsSpaceRight"></div>
+        </div>
+    </div>
+    <div id="comment">
+        <app-book-comment></app-book-comment>
+    </div>
+</div>

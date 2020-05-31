@@ -7,13 +7,18 @@
     </div>
         <mat-toolbar id="menu">
             <mat-toolbar-row>
-                <span id="logo"></span>
-                <span id="name">PREMIUM LIBRARY</span>
+                <a id="logo" routerLink="profile"></a>
+                <span id="name"><b>PREMIUM LIBRARY</b></span>
                 <span class="spacer"></span>
-                <span id="menu-text">ГЛАВНАЯ</span>
-                <span id="menu-text">КАТАЛОГ</span>
-                <span id="menu-text">ТОП 100</span>
-                <span id="menu-text">СЛУЧАЙНАЯ</span>
+                <a id="menu-text" routerLink="main">ГЛАВНАЯ</a>
+                <span id="menu-text" mat-button [matMenuTriggerFor]="menu">КАТАЛОГ</span>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLink="catalog-book">Книг</button>
+                    <button mat-menu-item routerLink="catalog-authors">Авторов</button>
+                    <button mat-menu-item routerLink="catalog-genre">Жанров</button>
+                </mat-menu>
+                <a id="menu-text" routerLink="top100">ТОП 100</a>
+                <a id="menu-text" routerLink="book">СЛУЧАЙНАЯ</a>
             </mat-toolbar-row>
         </mat-toolbar>
     <div id="rightBar">

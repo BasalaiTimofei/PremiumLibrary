@@ -16,6 +16,7 @@ namespace PremiumLibrary.Models.ViewModels.Book
         public int Assessment { get; set; }
         public int YourAssessment { get; set; }
         public List<string> Genres { get; set; }
+        public List<string> Authors { get; set; }
         public int Comments { get; set; }
         public int Likes { get; set; }
         public bool Like { get; set; }

@@ -15,11 +15,11 @@ namespace PremiumLibrary.Models.DataBaseModels.BookFolder
         public string BookUrl { get; set; }
         public int Year { get; set; }
 
-        public List<BookAssessment> Assessments { get; set; }
-        public List<GenreBook> Genres { get; set; }
-        public List<AuthorBook> Authors { get; set; }
-        public List<BookComment> Comments { get; set; }
-        public List<BookLike> Likes { get; set; }
-        public List<BookProcess> Processes { get; set; }
+        public virtual List<BookAssessment> Assessments { get; set; }
+        public virtual List<GenreBook> Genres { get; set; }
+        public virtual List<AuthorBook> Authors { get; set; }
+        public virtual List<BookComment> Comments { get; set; }
+        public virtual List<BookLike> Likes { get; set; }
+        public virtual List<BookProcess> Processes { get; set; }
     }
 }

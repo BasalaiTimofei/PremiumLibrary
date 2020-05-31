@@ -5,9 +5,9 @@
         public string Id { get; set; }
 
         public string AuthorId { get; set; }
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
 
         public string UserId { get; set; }
-        public User User { get; set; }
+        public virtual User User { get; set; }
     }
 }

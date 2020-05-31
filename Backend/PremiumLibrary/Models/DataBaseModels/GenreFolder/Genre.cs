@@ -9,7 +9,7 @@ namespace PremiumLibrary.Models.DataBaseModels.GenreFolder
         public string Name { get; set; }
         public string ImageUrl { get; set; }
 
-        public List<GenreLike> Likes { get; set; }
-        public List<GenreBook> Books { get; set; }
+        public virtual List<GenreLike> Likes { get; set; }
+        public virtual List<GenreBook> Books { get; set; }
     }
 }

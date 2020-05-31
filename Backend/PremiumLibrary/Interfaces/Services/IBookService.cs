@@ -11,6 +11,7 @@ namespace PremiumLibrary.Interfaces.Services
         Task<List<BookListingModel>> GetByAuthor(string authorId, string userId);
         Task<List<BookListingModel>> GetByGenre(string genreId, string userId);
         Task<List<BookListingModel>> GetByLikes(string userId);
+        Task<List<BookListingModel>> GetByProcess(int process, string userId);
 
         Task<BookListingModel> GetById(string bookId, string userId);
         Task<BookListingModel> GetByName(string bookName, string userId);

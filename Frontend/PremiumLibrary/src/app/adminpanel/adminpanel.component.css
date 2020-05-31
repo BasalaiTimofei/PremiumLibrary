@@ -1,0 +1,38 @@
+#container{
+    display: grid;
+    grid-template-areas:
+    "addBook addBook"
+    "addGenre addAuthor";
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    grid-gap: 10px;
+    height: auto;
+    margin: 0;
+    padding-bottom: 25px;
+}
+
+#addBook{
+    grid-area: addBook;
+    background: #363752;
+    color: rgb(143, 134, 184);
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+
+#addGenre{
+    grid-area: addGenre;
+    background: #363752;
+    color: rgb(143, 134, 184);
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+#addAuthor{
+    grid-area: addAuthor;
+    background: #363752;
+    color: rgb(143, 134, 184);
+    padding-top: 20px;
+    border-radius: 10px;
+}

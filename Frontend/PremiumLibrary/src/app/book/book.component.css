@@ -1,0 +1,166 @@
+#container{
+    display: grid;
+    grid-template-rows: auto auto;
+    width: 100%;
+    grid-gap: 10px;
+    height: auto;
+    margin: 0;
+}
+
+#book{
+    display: grid;
+    grid-template-areas:
+    "bookImage bookName"
+    "bookImage bookInformation"
+    "bookAssessment bookInformation"
+    "bookDescription bookDescription"
+    "bookButtons bookButtons";
+    grid-template-columns: 250px auto;
+    grid-template-rows: 50px 200px 80px auto auto;
+
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 50px;
+}
+
+#bookImage{
+    grid-area: bookImage;
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+}
+
+#bookName{
+    display: grid;
+    grid-template-columns: auto 60px;
+    grid-area: bookName;
+    margin-left: 30px;
+}
+
+#bookNameText{
+    color: rgba(200, 87, 204, 0.55);
+    font-size: 50px;
+}
+
+#buttonFavorite{
+    font-size: 50px; 
+    color: rgba(255, 255, 255, 0.55);
+    width: 60px;
+    height: 60px;
+    padding-top: 10px;
+    padding-left: 2px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+
+#bookAssessment{
+    grid-area: bookAssessment;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    font-size: 60px;
+    color: rgb(143, 134, 184);
+    margin-top: -15px;
+}
+
+#bookAssessment > span {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+}
+#bookAssessment > span:hover:before,
+#bookAssessment > span:hover ~ span:before {
+     content: "\2605";
+     position: absolute;
+     cursor: pointer;
+     color: rgba(193, 109, 196, 0.55);
+}
+
+#bookInformation{
+    grid-area: bookInformation;
+    color: rgb(143, 134, 184);
+    font-size: 30px;
+    margin-left: 30px;
+}
+
+#chipsStyle{
+    background: rgba(200, 87, 204, 0.55);
+    color: rgba(223, 178, 224, 0.87);
+    font-size: 20px;
+}
+
+#chipsStyle:hover{
+    background: rgba(200, 87, 204, 0.55);
+    color: rgba(209, 73, 73, 0.637);
+    font-size: 20px;
+}
+
+#bookDescription{
+    grid-area: bookDescription;
+    color: rgb(143, 134, 184);
+    font-size: 18px;
+}
+
+#bookButtons{
+    grid-area: bookButtons;
+    display: grid;
+    grid-template-areas:
+    "bookButtonsSpaceLeft bookProcess bookButtonsSpaceRight"
+    "bookButtonsSpaceLeft bookUrl bookButtonsSpaceRight";
+    grid-template-columns: 35% 35% 30%;
+    grid-template-rows: 30px 70px;
+    margin-top: 30px;
+}
+
+#bookProcess{
+    grid-area: bookProcess;
+    height: 30px;
+}
+
+#bookProcessButton{
+    text-align: center;
+    margin-left: 130px;
+    width: auto;
+    height: 100%; 
+    font-size: 30px; 
+    padding-top: 10px;
+    background: rgba(200, 87, 204, 0.55);
+    color: rgba(223, 178, 224, 0.87);
+}
+
+#bookUrl{
+    grid-area: bookUrl;
+    height: 70px;
+    margin-top: 10px;
+}
+
+#bookUrlBotton{
+    width: auto;
+    height: 100%; 
+    font-size: 42px; 
+    padding-top: 15px;
+    text-align: center;
+    background: rgba(200, 87, 204, 0.55);
+    color: rgba(223, 178, 224, 0.87);
+    border-radius: 20px;
+}
+
+#bookUrlBotton:hover{
+    color: rgba(209, 73, 73, 0.637);
+}
+
+#bookButtonsSpaceLeft{
+    grid-area: bookButtonsSpaceLeft;
+}
+
+#bookButtonsSpaceRight{
+    grid-area: bookButtonsSpaceRight;
+}
+
+#comment{
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+    height: auto;
+}

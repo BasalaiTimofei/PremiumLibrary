@@ -4,7 +4,7 @@
     "leftBar profile rightBar"
     "leftBar menu rightBar"
     "footerBar footerBar footerBar";
-    grid-template-rows: 190px 100px 10px;
+    grid-template-rows: 185px 100px 25px;
     grid-template-columns: auto 1350px auto;
     height: auto;
     margin: 0;
@@ -28,7 +28,7 @@
     grid-area: menu;
     border-radius: 50px;
     padding: 17px;
-    box-shadow: 0 0 10px rgb(41, 36, 61);
+    box-shadow: 0 0 20px rgb(181, 171, 226);
 }
 
 #footerBar{
@@ -49,6 +49,17 @@
     box-shadow: 0 0 15px rgb(181, 171, 226);
 }
 
+#logo:hover{
+    width: 100px;
+    height: 100px;
+    border: 20px rgb(86, 55, 121) inset;
+    border-radius: 100%;
+    object-fit: fill;
+    background-color: rgb(104, 11, 99);
+    box-shadow: 0 0 20px rgba(193, 109, 196, 0.55);
+    cursor: pointer;
+}
+
 #name{
     margin-left: 20px;
     font-size: 35px;
@@ -58,5 +69,14 @@
 #menu-text{
     margin-right: 25px;
     font-size: 25px;
-    color: rgb(181, 171, 226);  
+    color: rgb(181, 171, 226);
+    text-decoration: none
+}
+
+#menu-text:hover{
+    margin-right: 25px;
+    font-size: 25px;
+    color: rgba(193, 109, 196, 0.55);
+    cursor: pointer;
+    text-shadow: 0 0 1px rgba(193, 109, 196, 0.55);
 }

@@ -1,0 +1,27 @@
+<div id="body">
+    <div id="text-header">
+        КАТАЛОГ АВТОРОВ
+    </div>
+    <div id="container">
+        <div *ngFor="let item of authorListingModel">
+            <a (click)="redirect(item.id)">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <span id="headName">{{item.fullName}}</span>
+                        </mat-card-title>
+                    </mat-card-header>
+                        <img mat-card-image
+                        src="{{item.imageUrl}}" 
+                        alt="Book Image"
+                        width="100%" height="280px">
+                    <mat-card-content id="cardContent">
+                        <p>
+                            Выбран как любимый: {{item.likes}}раз
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.form{
+    padding: 20px;
+}
+
+#addButton{
+    background-color: rgb(143, 134, 184);
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#headerText{
+    color: rgb(143, 134, 184);
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+}

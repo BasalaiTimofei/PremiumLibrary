@@ -1,0 +1,53 @@
+#text-header{
+    height: 50px;
+    font-size: 35px;
+    color: rgb(181, 171, 226);
+    text-align: center;
+}
+
+  
+#container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-gap: 10px;
+    height: auto;
+    width: 99%;
+    margin-top: 10px;
+    margin-left: 11px;
+    margin-bottom: 20px;
+}
+
+.card {
+  max-width: 280px;
+  border-radius: 25px;
+  background: #363752;
+  margin-bottom: 20px;
+}
+
+#headName{
+  color: rgb(143, 134, 184);
+
+}
+
+#cardContent{
+  color: rgb(143, 134, 184);
+  font-size: 18px;
+}
+
+#spacer{
+  flex: 1 1 auto;
+}
+
+#status{
+  display: grid;
+  grid-template-columns: auto 50% auto;
+  height: auto;
+}
+
+#result{
+  background: rgb(143, 134, 184);
+  height: 25px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 10px;
+}

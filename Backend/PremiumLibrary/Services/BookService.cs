@@ -30,7 +30,10 @@ namespace PremiumLibrary.Services
             if (books == null) throw new ServerException("Сервер вернул null");
             var mapping = _mapper.Map<List<BookListingModel>>(books);
             foreach (var bookListingModel in mapping)
+            {
                 bookListingModel.Like = await IsLike(bookListingModel.Id, userId);
+                bookListingModel.Process = await GetProcess(bookListingModel.Id, userId);
+            }
             return mapping;
         }
 
@@ -43,7 +46,10 @@ namespace PremiumLibrary.Services
             if (!result.Any()) throw new CustomException("По такому автору нет книг");
             var mapping = _mapper.Map<List<BookListingModel>>(result);
             foreach (var bookListingModel in mapping)
+            {
                 bookListingModel.Like = await IsLike(bookListingModel.Id, userId);
+                bookListingModel.Process = await GetProcess(bookListingModel.Id, userId);
+            }
             return mapping;
         }
 
@@ -56,7 +62,10 @@ namespace PremiumLibrary.Services
             if (!result.Any()) throw new CustomException("По такому жанру нет книг");
             var mapping = _mapper.Map<List<BookListingModel>>(result);
             foreach (var bookListingModel in mapping)
+            {
                 bookListingModel.Like = await IsLike(bookListingModel.Id, userId);
+                bookListingModel.Process = await GetProcess(bookListingModel.Id, userId);
+            }
             return mapping;
         }
 
@@ -69,7 +78,10 @@ namespace PremiumLibrary.Services
             if (!result.Any()) throw new CustomException("Нет избранных книг");
             var mapping = _mapper.Map<List<BookListingModel>>(result);
             foreach (var bookListingModel in mapping)
-                bookListingModel.Like = true;
+            {
+                bookListingModel.Like = await IsLike(bookListingModel.Id, userId);
+                bookListingModel.Process = await GetProcess(bookListingModel.Id, userId);
+            }
             return mapping;
         }
 
@@ -80,6 +92,7 @@ namespace PremiumLibrary.Services
             if (result == null) throw new CustomException("По такому id нет книг");
             var mapping = _mapper.Map<BookListingModel>(result);
             mapping.Like = await IsLike(mapping.Id, userId);
+            mapping.Process = await GetProcess(mapping.Id, userId);
             return mapping;
         }
 
@@ -92,6 +105,22 @@ namespace PremiumLibrary.Services
             if (result == null) throw new CustomException("По такому имени нет книг");
             var mapping = _mapper.Map<BookListingModel>(result);
             mapping.Like = await IsLike(mapping.Id, userId);
+            mapping.Process = await GetProcess(mapping.Id, userId);
+            return mapping;
+        }
+
+        public async Task<List<BookListingModel>> GetByProcess(int process, string userId)
+        {
+            var books = await _bookRepository.GetAll();
+            if (books == null) throw new ServerException("Сервер вернул null");
+            var result = books.Where(w => w.Processes.Any(s => s.Process == process));
+            if (result == null) throw new CustomException("По такому имени нет книг");
+            var mapping = _mapper.Map<List<BookListingModel>>(result);
+            foreach (var bookListingModel in mapping)
+            {
+                bookListingModel.Like = true;
+                bookListingModel.Process = await GetProcess(bookListingModel.Id, userId);
+            }
             return mapping;
         }
 
@@ -135,7 +164,7 @@ namespace PremiumLibrary.Services
 
         public async Task AddOrUpdateProcess(string bookId, string userId, int process)
         {
-            if (bookId.IsNullOrEmpty() || process > 3 || process < 0)
+            if (bookId.IsNullOrEmpty() || process > 4 || process < 1)
                 throw new CustomException("Некоректные данные");
             var book = await _bookRepository.GetById(bookId);
             if (book == null) throw new CustomException("По такому id нет книг");
@@ -149,6 +178,13 @@ namespace PremiumLibrary.Services
         {
             var result = await _bookRepository.GetById(bookId);
             return result.Likes.Any(w => string.Equals(w.UserId, userId));
+        }
+
+        private async Task<int> GetProcess(string bookId, string userId)
+        {
+            var book = await _bookRepository.GetById(bookId);
+            if (!book.Processes.Any(w => string.Equals(w.UserId, userId))) return 0;
+            return book.Processes.FirstOrDefault(w => string.Equals(w.UserId, userId)).Process;
         }
 
         public void Dispose()

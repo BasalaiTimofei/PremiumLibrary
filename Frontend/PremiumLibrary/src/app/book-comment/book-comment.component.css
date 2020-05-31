@@ -1,0 +1,104 @@
+#list{
+    margin-bottom: 11px;
+}
+
+#item1{
+    display: grid;
+    grid-template-areas:
+    "commentImage commentName commentAction"
+    "commentText commentText commentText"
+    "commentInfo commentInfo commentInfo";
+    grid-template-rows: 80px auto 30px;
+    grid-template-columns: 60px 88% 50px;
+
+    width: 98%;
+    margin-left: 11px;
+    margin-top: 5px;
+    border-radius: 25px;
+    background: #363752;
+}
+
+#commentImage{
+    grid-area: commentImage;
+    height: 60px;
+    width: 60px;
+    box-shadow: 0 0 10px rgb(181, 171, 226);
+    border-radius: 100%;
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover; 
+    margin: 15px;
+}
+
+#commentName{
+    grid-area: commentName;
+    margin-left: 40px;
+    padding-top: 28px;
+    font-size: 30px;
+    color: rgb(143, 134, 184);
+}
+
+#commentAction{
+    grid-area: commentAction;
+    height: 60px;
+    width: 60px;
+    padding-top: 20px;
+}
+
+#buttonFavorite{
+    font-size: 50px; 
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+#commentText{
+    grid-area: commentText;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 15px;
+    font-size: 22px;
+    color: rgb(143, 134, 184);
+    text-align: left;
+}
+
+#commentInfo{
+    grid-area: commentInfo;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 18px;
+    color: rgb(143, 134, 184);
+}
+
+#writerComment{
+    width: 95.6%;
+    margin-left: 25px;
+    margin-top: 5px;
+    border-radius: 25px;
+    background: #363752;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.serch {
+    margin-top: 5px;
+    margin-left: 25px;
+    width: 92.5%;
+}
+
+#buttonSearch{
+    font-size: 40px; 
+    color: rgba(255, 255, 255, 0.55);
+    border: 2px rgba(255, 255, 255, 0.55) solid;
+    width: 45px;
+    height: 35px;
+    padding-top: 10px;
+    padding-left: 2px;
+    border-radius: 100%;
+    margin-bottom: 10px;
+}
+
+#buttonSearch:hover{
+    color: rgba(193, 109, 196, 0.55);
+    border: 2px rgba(193, 109, 196, 0.55) solid;
+    box-shadow: 0 0 7px rgba(193, 109, 196, 0.55);
+}

@@ -10,8 +10,8 @@ namespace PremiumLibrary.Interfaces.Services
         Task<List<AuthorCommentListingModel>> GetAuthorComments(string authorId, string userId);
         Task<List<BookCommentListingModel>> GetBookComments(string bookId, string userId);
 
-        Task AddAuthorComment(AuthorCommentCreateModel authorCommentCreateModel);
-        Task AddBookComment(BookCommentCreateModel bookCommentCreateModel);
+        Task AddAuthorComment(AuthorCommentCreateModel authorCommentCreateModel, string userId);
+        Task AddBookComment(BookCommentCreateModel bookCommentCreateModel, string userId);
         Task DeleteAuthorComment(string authorCommentId);
         Task DeleteBookComment(string bookCommentId);
     }

@@ -1,0 +1,33 @@
+#text-header{
+    height: 30px;
+    font-size: 25px;
+    color: rgb(181, 171, 226);
+    text-align: center;
+}
+
+#list{
+    margin-bottom: 11px;
+}
+
+#item1{
+    height: 80px;
+    width: 97%;
+    margin-left: 11px;
+    margin-top: 5px;
+    border-radius: 25px;
+    background: #363752;
+}
+
+#authorImage{
+    height: 60px;
+    width: 60px;
+    box-shadow: 0 0 10px rgb(181, 171, 226);
+    border-radius: 100%;
+    background-size: cover;  
+}
+
+#name{
+    margin-left: 30px;
+    font-size: 22px;
+    color: rgb(143, 134, 184);
+}

@@ -1,0 +1,58 @@
+#container{
+    display: grid;
+    grid-template-rows: auto auto;
+    width: 100%;
+    grid-gap: 10px;
+    height: auto;
+    margin: 0;
+}
+
+
+#user{
+    display: grid;
+    grid-template-areas:
+    "userImage userName"
+    "userImage userInformation";
+    grid-template-columns: 250px auto;
+    grid-template-rows: 50px 200px;
+
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+    padding: 50px;
+}
+
+#userImage{
+    grid-area: userImage;
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+}
+
+#userName{
+    display: grid;
+    grid-template-columns: auto 60px;
+    grid-area: userName;
+    margin-left: 30px;
+}
+
+#userNameText{
+    color: rgba(200, 87, 204, 0.55);
+    font-size: 50px;
+}
+
+#userInformation{
+    grid-area: userInformation;
+    color: rgb(143, 134, 184);
+    font-size: 30px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+#books{
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+    height: auto;
+}

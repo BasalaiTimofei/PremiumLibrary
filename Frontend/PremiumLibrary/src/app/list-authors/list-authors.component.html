@@ -1,0 +1,11 @@
+<div id="text-header">
+    Лучшие авторы
+</div>
+<mat-action-list id="list">
+    <div *ngFor="let item of authorListingModel">
+        <button mat-list-item id="item1" (click)="redirect(item.id)">
+            <span id="authorImage" style="background-image: url({{item.imageUrl}});"></span>
+            <span id="name">{{item.fullName}}</span>    
+        </button>
+    </div>
+</mat-action-list>

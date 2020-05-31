@@ -47,22 +47,24 @@ namespace PremiumLibrary.Services
             return mapping;
         }
 
-        public async Task AddAuthorComment(AuthorCommentCreateModel authorCommentCreateModel)
+        public async Task AddAuthorComment(AuthorCommentCreateModel authorCommentCreateModel, string userId)
         {
             if (authorCommentCreateModel == null 
                 || authorCommentCreateModel.AuthorId.IsNullOrEmpty() 
-                || authorCommentCreateModel.Comment.IsNullOrEmpty() 
-                || authorCommentCreateModel.UserId.IsNullOrEmpty()) throw new CustomException("Некоректные данные");
-            await _commentRepository.AddAuthorComment(_mapper.Map<AuthorComment>(authorCommentCreateModel));
+                || authorCommentCreateModel.Comment.IsNullOrEmpty()) throw new CustomException("Некоректные данные");
+            var model = _mapper.Map<AuthorComment>(authorCommentCreateModel);
+            model.UserId = userId;
+            await _commentRepository.AddAuthorComment(model);
         }
 
-        public async Task AddBookComment(BookCommentCreateModel bookCommentCreateModel)
+        public async Task AddBookComment(BookCommentCreateModel bookCommentCreateModel, string userId)
         {
             if (bookCommentCreateModel == null
                 || bookCommentCreateModel.BookId.IsNullOrEmpty()
-                || bookCommentCreateModel.Comment.IsNullOrEmpty()
-                || bookCommentCreateModel.UserId.IsNullOrEmpty()) throw new CustomException("Некоректные данные");
-            await _commentRepository.AddBookComment(_mapper.Map<BookComment>(bookCommentCreateModel));
+                || bookCommentCreateModel.Comment.IsNullOrEmpty()) throw new CustomException("Некоректные данные");
+            var model = _mapper.Map<BookComment>(bookCommentCreateModel);
+            model.UserId = userId;
+            await _commentRepository.AddBookComment(model);
         }
 
         public async Task DeleteAuthorComment(string authorCommentId)

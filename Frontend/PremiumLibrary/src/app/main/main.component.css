@@ -1,0 +1,44 @@
+#container {
+    display: grid;
+    grid-template-areas:
+    "carousel carousel"
+    "listAuthors listGenres"
+    "listBooks listBooks";
+    grid-template-rows: 450px auto auto;
+    grid-template-columns: minmax(540px, 50%) minmax(540px, 50%);
+    grid-gap: 10px;
+    height: auto;
+    margin: 0;
+}
+
+#carousel{
+    grid-area: carousel;
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#listAuthors{
+    grid-area: listAuthors;
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#listGenres{
+    grid-area: listGenres;
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+#listBooks{
+    grid-area: listBooks;
+    background: #2d2e44;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
+}

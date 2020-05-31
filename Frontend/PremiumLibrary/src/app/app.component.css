@@ -5,44 +5,62 @@
     "pageLeft pageFind pageRight"
     "pageLeft pageMain pageRight"
     "pageFooter pageFooter pageFooter";
-    grid-template-rows: 300px 70px auto 300px;
+    grid-template-rows: 310px 70px auto 300px;
     grid-template-columns: auto 1350px auto;
-    grid-gap: 10px;
+    grid-gap: 5px;
     height: auto;
     margin: 0;
 }
 
-#pageHeader,
-#pageLeft,
-#pageMain,
-#pageRight,
-#pageFooter,
-
-#pageFind{
-    background: #412a47;
-}
-
 #pageHeader {
+    background: #412a47;
     grid-area: pageHeader;
 }
 
 #pageFind{
+    background: #2d2e44;
     grid-area: pageFind;
+    box-shadow: 0 0 10px rgb(41, 36, 61);
+    border-radius: 10px;
+    margin: 5px;
 }
 
 #pageFooter {
     grid-area: pageFooter;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    background: #20202e;
+}
+
+.form{
+    padding: 20px;
+}
+
+#addButton{
+    background-color: rgb(143, 134, 184);
+    width: 100%;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#headerText{
+    color: rgb(143, 134, 184);
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
 }
 
 #pageMain {
+    background: #27283a;
     grid-area: pageMain;
 }
 
 #pageLeft {
+    background: #27283a;
     grid-area: pageLeft;
 }
 
 #pageRight {
+    background: #27283a;
     grid-area: pageRight;
 }
 
@@ -52,62 +70,20 @@
     width: 92.5%;
 }
 
-
-
-
-
-
-
-.header{
-    height: 200px;
-    width: all;
-    background-color: gray;
+#buttonSearch{
+    font-size: 40px; 
+    color: rgba(255, 255, 255, 0.55);
+    border: 2px rgba(255, 255, 255, 0.55) solid;
+    width: 45px;
+    height: 35px;
+    padding-top: 10px;
+    padding-left: 2px;
+    border-radius: 100%;
+    margin-bottom: 10px;
 }
 
-.header-bottom{
-    height: 100px;
-    width: all;
-    background-color: darkgray;
-}
-
-.find{
-    height: 50px;
-    width: all;
-    background-color: lightgray;
-}
-
-.first-karusel{
-    height: 400px;
-    width: all;
-    background-color: gray;
-}
-
-.last-added-odd{
-    height: 100px;
-    width: all;
-    background-color: darkgray;
-}
-
-.last-added-even{
-    height: 100px;
-    width: all;
-    background-color: lightgray;
-}
-
-.second-karusel{
-    height: 400px;
-    width: all;
-    background-color: gray;
-}
-
-.result{
-    height: 300px;
-    width: all;
-    background-color: darkgray;
-}
-
-.filter{
-    height: 600px; /* 125 + 75*5 + 100 */
-    width: all;
-    background-color: lightgray;
+#buttonSearch:hover{
+    color: rgba(193, 109, 196, 0.55);
+    border: 2px rgba(193, 109, 196, 0.55) solid;
+    box-shadow: 0 0 7px rgba(193, 109, 196, 0.55);
 }

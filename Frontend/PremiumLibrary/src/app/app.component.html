@@ -10,87 +10,29 @@
       <input style="color: rgba(255, 255, 255, 0.55);" matInput>
     </mat-form-field>
     <button mat-button matSuffix mat-icon-button aria-label="Search">
-      <mat-icon style="
-        font-size: 40px; 
-        color: rgba(255, 255, 255, 0.55);
-        border: 2px rgba(255, 255, 255, 0.55) solid;
-        width: 45px;
-        height: 35px;
-        padding-top: 10px;
-        border-radius: 100%;">search</mat-icon>
+      <mat-icon id="buttonSearch">search</mat-icon>
     </button>
-
   </div>
-  <div id="pageLeft">
-    Left
-  </div>
+  <div id="pageLeft"></div>
   <div id="pageMain">
-    <app-body></app-body>
+    <router-outlet></router-outlet>
   </div>
-  <div id="pageRight">
-    Right
-  </div>
+  <div id="pageRight"></div>
   <div id="pageFooter">
-    Footer
-  </div>
-</div>
-
-
-
-<div style="height: 1000px;"></div>
-<div>
-  <div class="header">
-    HEADER                         PROFILE
-  </div>
-  <div class="header-bottom">
-    LOGO NAME                      ГЛАВНАЯ КАТАЛОГ ТОП100 СЛУЧАЙНАЯ
-  </div>
-  <div class="find">
-    ПОИСК
-  </div>
-  <div class="first-karusel">
-    КАРУСЕЛЬ 20ШТ
-  </div>
-  <div>
-    ПОСЛЕДНЕЕ ДОБАВЛЕНОЕ 10ШТ
-    <div class="last-added-odd">1</div>
-    <div class="last-added-even">2</div>
-    <div class="last-added-odd">3</div>
-    <div class="last-added-even">4</div>
-    <div class="last-added-odd">5</div>
-    <div class="last-added-even">6</div>
-    <div class="last-added-odd">7</div>
-    <div class="last-added-even">8</div>
-    <div class="last-added-odd">9</div>
-    <div class="last-added-even">10</div>
-  </div>
-  <div class="second-karusel">
-    КАРУСЕЛЬ ПОСДЕДНИХ КОМЕНТАРИЕВ 20ШТ
-  </div>
-  <div class="filter-and-result">
-    <div class="result">
-      РЕЗУЛЬТАТЫ ФИЛЬТРА
-    </div>
-    <div class="filter">
-      ФИЛЬТР
-      <div>
-        Искать по жанру
-      </div>
-      <div>
-        Искать по автору
-      </div>
-      <div>
-        статус (читаю, буду читать, тд.)
-      </div>
-      <div>
-        Год (от до)
-      </div>
-      <div>
-        Райтинг (от)
-      </div>
-      <div>
-        Кнопка "искать"
-      </div>
-    </div>
+    <div></div>
+    <form class="form">
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label style="color: rgba(255, 255, 255, 0.55);">Логин</mat-label>
+        <input type="text" matInput style="color: rgba(255, 255, 255, 0.55);" name="userName" [ngModel]="userNameOrEmailAddress">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label style="color: rgba(255, 255, 255, 0.55);">Пароль</mat-label>
+          <input type="password" matInput style="color: rgba(255, 255, 255, 0.55);" name="password" [ngModel]="password">
+      </mat-form-field>
+      <br>
+      <button (click)="adminAutorisation()" mat-raised-button color="primary" id="addButton">Авторизоваться</button>              
+    </form>
+    <div></div>
   </div>
 </div>

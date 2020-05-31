@@ -19,8 +19,6 @@ namespace PremiumLibrary.Mapping
                     e => e.MapFrom(q => DateTime.Now))
                 .ForMember(w => w.BookId,
                     e => e.MapFrom(q => q.BookId))
-                .ForMember(w => w.UserId,
-                    e => e.MapFrom(q => q.UserId))
                 .ForMember(w => w.BookCommentLikes,
                     e => e.MapFrom(q => new List<BookCommentLike>()))
                 .ForMember(w => w.Book,

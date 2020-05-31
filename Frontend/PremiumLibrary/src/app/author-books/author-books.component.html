@@ -1,0 +1,41 @@
+<div id="body">
+    <div id="text-header">
+        Книги автора
+    </div>
+    <div id="container">
+        <div *ngFor="let item of bookListingModel">
+            <a (click)="redirect(item.id)">
+                <mat-card class="card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <span id="headName">{{item.name}}</span>
+                        </mat-card-title>
+                    </mat-card-header>
+                        <img mat-card-image
+                        src="{{item.imageUrl}}" 
+                        alt="Book Image"
+                        width="100%" height="280px">
+                    <mat-card-content id="cardContent">
+                        <p>
+                            Жанры: <span *ngFor="let genre of item.genres"> {{genre}} </span>
+                        </p>
+                        <p>
+                            Авторы: <span *ngFor="let author of item.authors"> {{author}} </span>
+                        </p>
+                        <p>
+                            Рейтинг: {{item.assessment}}
+                        </p>
+                    </mat-card-content>
+                    <div id="status" *ngIf="item.process != 0">
+                        <div></div>
+                        <div id="result" *ngIf="item.process == 1">Читаю</div>
+                        <div id="result" *ngIf="item.process == 2">Буду читать</div>
+                        <div id="result" *ngIf="item.process == 3">Прочитано</div>
+                        <div id="result" *ngIf="item.process == 4">Брошено</div>
+                        <div></div>
+                    </div>
+                </mat-card>    
+            </a>
+        </div>
+    </div>
+</div>

@@ -125,11 +125,10 @@ namespace PremiumLibrary.Tests.Services
             var authorCommentCreateModel = new AuthorCommentCreateModel
             {
                 AuthorId = "SomeAuthorId",
-                UserId = "SomeUserId",
                 Comment = "SomeAuthorComment"
             };
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            var addAuthorComment = commentService.AddAuthorComment(authorCommentCreateModel);
+            var addAuthorComment = commentService.AddAuthorComment(authorCommentCreateModel, It.IsAny<string>());
             _mockCommentRepository.Verify(w => w.AddAuthorComment(It.IsAny<AuthorComment>()), Times.Once);
         }
 
@@ -139,18 +138,17 @@ namespace PremiumLibrary.Tests.Services
             var authorCommentCreateModel = new AuthorCommentCreateModel
             {
                 AuthorId = "",
-                UserId = "",
                 Comment = ""
             };
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            Assert.ThrowsAsync<CustomException>(() => commentService.AddAuthorComment(authorCommentCreateModel));
+            Assert.ThrowsAsync<CustomException>(() => commentService.AddAuthorComment(authorCommentCreateModel, It.IsAny<string>()));
         }
 
         [Test]
         public void AddAuthorComment_NullArgument_Exception()
         {
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            Assert.ThrowsAsync<CustomException>(() => commentService.AddAuthorComment(null));
+            Assert.ThrowsAsync<CustomException>(() => commentService.AddAuthorComment(null, It.IsAny<string>()));
         }
 
         [Test]
@@ -159,11 +157,10 @@ namespace PremiumLibrary.Tests.Services
             var bookCommentCreateModel = new BookCommentCreateModel
             {
                 BookId = "SomeBookId",
-                UserId = "SomeUserId",
                 Comment = "SomeBookComment"
             };
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            var addBookComment = commentService.AddBookComment(bookCommentCreateModel);
+            var addBookComment = commentService.AddBookComment(bookCommentCreateModel, It.IsAny<string>());
             _mockCommentRepository.Verify(w => w.AddBookComment(It.IsAny<BookComment>()), Times.Once);
         }
 
@@ -173,18 +170,17 @@ namespace PremiumLibrary.Tests.Services
             var bookCommentCreateModel = new BookCommentCreateModel
             {
                 BookId = "",
-                UserId = "",
                 Comment = ""
             };
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            Assert.ThrowsAsync<CustomException>(() => commentService.AddBookComment(bookCommentCreateModel));
+            Assert.ThrowsAsync<CustomException>(() => commentService.AddBookComment(bookCommentCreateModel, It.IsAny<string>()));
         }
 
         [Test]
         public void AddBookComment_NullArgument_Exception()
         {
             using var commentService = new CommentService(_mockCommentRepository.Object, _mapper);
-            Assert.ThrowsAsync<CustomException>(() => commentService.AddBookComment(null));
+            Assert.ThrowsAsync<CustomException>(() => commentService.AddBookComment(null, It.IsAny<string>()));
         }
 
         [Test]
